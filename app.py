@@ -23,24 +23,7 @@ def index():
         except Exception as e:
             sys.exit(f"An unexpected error occurred: {e}")
         return render_template("sort.html", sorted_cryptos=sorted_cryptos)
-    return render_template("index.html")
+    else:
+        return render_template("index.html")
 
-def oldmain():
-    # لیست ارزها از کاربر
-    coin_ids = input("Enter cryptocurrency IDs separated by commas (e.g., bitcoin,ethereum,dogecoin): ").strip().split(',')
-    
-    try:
-        sorted_cryptos = sort_cryptos_by_potential(coin_ids)
-        
-        # نمایش نتایج
-        if sorted_cryptos:
-            print("\nSorted Cryptocurrencies by Potential:")
-            for crypto in sorted_cryptos:
-                print(f"{crypto['name']} ({crypto['symbol']}): Score = {crypto['score']:.2f}")
-        else:
-            print("No valid data found for the provided cryptocurrencies.")
-    except Exception as e:
-        sys.exit(f"An unexpected error occurred: {e}")
 
-#if __name__ == "__main__":
-    #main()

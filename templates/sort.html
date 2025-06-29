@@ -1,10 +1,15 @@
 {% extends "layout.html" %}
 
 {% block body %}
+    <h2>Sorted Cryptocurrencies by Potential</h2>
 
+    <ul>
     {% for crypto in sorted_cryptos %}
-        <option value="{{ crypto.name }}">{{ crypto.name }} ({{ crypto.symbol }}): Score = {{ '%.2f' | format(crypto.score) }}</option>
+        <li>{{ crypto.name }} ({{ crypto.symbol }}): Score = {{ '%.2f' | format(crypto.score) }}</li>
     {% endfor %}
+    </ul>
 
-    
+    <!-- Redirects to index -->
+    <a href="/" style="display: inline-block; padding: 8px 16px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 4px;">Exit</a>
 {% endblock %}
+
