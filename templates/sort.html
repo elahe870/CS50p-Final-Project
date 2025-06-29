@@ -2,6 +2,9 @@
 
 {% block body %}
 
-    hello, {% if name %}{{ name }}{% else %}world{% endif %}
+    {% for crypto in sorted_cryptos %}
+        <option value="{{ crypto.name }}">{{ crypto.name }} ({{ crypto.symbol }}): Score = {{ '%.2f' | format(crypto.score) }}</option>
+    {% endfor %}
 
+    
 {% endblock %}
