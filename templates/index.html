@@ -3,7 +3,15 @@
 {% block body %}
 
     <form action="/" method="post">
-        <input autocomplete="off" autofocus name="name" placeholder="Enter cryptocurrency IDs separated by commas (for example: bitcoin,ethereum,dogecoin) " type="text" size="72">
+         <p>
+            Hint: find cryptocurrency IDs at: 
+            <a href="https://api.coingecko.com/api/v3/coins/list" target="_blank">
+                https://api.coingecko.com/api/v3/coins/list
+            </a>
+        </p>
+        <input autocomplete="off" autofocus name="name" 
+           placeholder="Enter Cryptocurrency IDs separated by commas (for example: bitcoin,ethereum,ripple)" 
+           type="text" size="72">
         <button type="submit">Sort</button>
     </form>
 
