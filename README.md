@@ -5,14 +5,20 @@
 
 #### Description:
 
-    This program is used to sort some cryptos, selected by user, according to some parameters gathered from coingecko.com.
-    The parameters used in this program to calculate performance of selected cryptos are:
+    This Python/Flask web application allows users to **enter cryptocurrency IDs**, and the app will **rank them by potential** based on real-time data from the [CoinGecko API](https://www.coingecko.com/en/api).
+    The metrics used in this program to calculate performance of selected cryptos are:
      - 24h % price change
      - 7d % price change
      - Trading volume (USD)
      - Inverse of market capitalization (to favor undervalued coins)
 
-
+    The formula used to calculate the score for each crypto is:
+    
+            price_change_24h * 0.3 +          # 30% weight: 24-hour price change percentage
+            (total_volume / 1e9) * 0.2 +      # 20% weight: trading volume (scaled to billions of USD)
+            (1 / market_cap * 1e9) * 0.2 +    # 20% weight: inverse market cap (favoring smaller caps)
+            price_change_7d * 0.3             # 30% weight: 7-day price change percentage
+        
 
 #### Project address in github: 
     https://github.com/elahe870/CS50p-Final-Project
@@ -30,7 +36,7 @@
 
 ### Impact:
 
-    this project can help beginners to understand how some parameters (like Market Cap and Trading Volume) can affect the potential of a coin.
+    this project can help beginners to practice how some parameters (like Market Cap and Trading Volume) can affect the potential of a coin.
     
 ### Features: 
 

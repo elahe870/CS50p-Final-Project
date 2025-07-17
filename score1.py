@@ -13,11 +13,12 @@ def calculate_score(data):
         
         # وزن‌دهی به فیلدها
         score = (
-            price_change_24h * 0.3 +  # ۳۰% وزن
-            (total_volume / 1e9) * 0.2 +  # ۲۰% وزن (حجم معاملات به میلیارد)
-            (1 / market_cap * 1e9) * 0.2 +  # ۲۰% وزن (معکوس سرمایه‌سازی بازار)
-            price_change_7d * 0.3  # ۳۰% وزن
+            price_change_24h * 0.3 +          # 30% weight: 24-hour price change percentage
+            (total_volume / 1e9) * 0.2 +      # 20% weight: trading volume (scaled to billions of USD)
+            (1 / market_cap * 1e9) * 0.2 +    # 20% weight: inverse market cap (favoring smaller caps)
+            price_change_7d * 0.3             # 30% weight: 7-day price change percentage
         )
+        
         return score
     except Exception as e:
         print(f"Error calculating score for data: {e}")
