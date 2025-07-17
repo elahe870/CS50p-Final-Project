@@ -9,8 +9,10 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        
         coin_ids=request.form.get("name").strip().split(',')
         try:
+
             sorted_cryptos = sort_cryptos_by_potential(coin_ids)
             
             # نمایش نتایج

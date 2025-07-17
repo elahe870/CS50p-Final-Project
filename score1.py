@@ -5,7 +5,7 @@ def calculate_score(data):
     try:
         market_data = data.get('market_data', {})
         
-        # اطمینان از وجود فیلدها قبل از دسترسی
+        # check fields availability
         price_change_24h = market_data.get('price_change_percentage_24h', 0)
         total_volume = market_data.get('total_volume', {}).get('usd', 0)
         market_cap = market_data.get('market_cap', {}).get('usd', 1)  # 0 division
@@ -53,4 +53,7 @@ def sort_cryptos_by_potential(coin_ids):
     results.sort(key=lambda x: x['score'], reverse=True)
     
     return results
+
+
+
 
