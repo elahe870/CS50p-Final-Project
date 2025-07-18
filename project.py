@@ -30,6 +30,7 @@ def index():
 
 def extract_coin_ids(form_data):
     #extract input coins
+    
     return form_data.strip().split(',')
 
 
@@ -55,16 +56,28 @@ def calculate_score(data):
     except Exception as e:
         print(f"Error calculating score for data: {e}")
         return 0
+    
+def data_fetch_per_coin(coin_id):
+    try: 
+        url = f"https://api.coingecko.com/api/v3/coins/{coin_id}"
+        response = requests.get(url)
+        response.raise_for_status()  # چک کردن وضعیت HTTP
+        data = response.json()
+        return data
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 404:
+            print(f"Coin ID '{coin_id}' not found on CoinGecko. Skipping...")
+        else:
+            print(f"Error fetching data for {coin_id}: {e}")
+    except Exception as e:
+        print(f"Unexpected error for {coin_id}: {e}")
+
 
 def sort_cryptos_by_potential(coin_ids):
     results = []
     for coin_id in coin_ids:
         try:
-            url = f"https://api.coingecko.com/api/v3/coins/{coin_id}"
-            response = requests.get(url)
-            response.raise_for_status()  # چک کردن وضعیت HTTP
-            data = response.json()
-            
+            data = data_fetch_per_coin(coin_id)
             # محاسبه امتیاز
             score = calculate_score(data)
             
