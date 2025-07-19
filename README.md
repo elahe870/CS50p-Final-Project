@@ -47,8 +47,8 @@
 
 ### Installation Tips:
 
-    - Ensure `flask` and 'requests' are installed via pip: 
-        pip install flask requests
+    - Ensure `flask` and 'requests' and 'pytest' are installed via pip: 
+        pip install flask requests pytest
 
   
 ### Future Improvements:
